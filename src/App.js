@@ -1,8 +1,10 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React, { useState, memo } from 'react';
 import Calendar from './Calendar';
 
 export default function App() {
+  console.log('Rendu App');
   const [value, setValue] = useState('');
+  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -12,7 +14,8 @@ export default function App() {
         onChange={(e) => setValue(e.target.value)}
         value={value}
       />
-      <Calendar />
+      <button onClick={() => setCount(count + 1)}>+1</button>
+      <Calendar count={count} />
     </>
   );
 }

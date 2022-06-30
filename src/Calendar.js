@@ -1,5 +1,12 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-export default function Calendar() {
-  return <h2>Calendrier</h2>;
+function Calendar({ count }) {
+  console.log('Rendu Calendar');
+  return <h2>Calendrier - {count}</h2>;
 }
+
+export default memo(Calendar, (prevProps, newProps) => {
+  if (prevProps.count === newProps.count) {
+    return true;
+  }
+});
